@@ -1,0 +1,119 @@
+<?php echo $this->doctype('HTML5') ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
+    <head>  
+        <?php
+        echo $this->headTitle("Site" . $this->title);
+
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1')
+                ->setHttpEquiv('Content-Type', 'text/html;charset=UTF-8')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+                ->appendHttpEquiv('language', 'pt-BR')
+                ->appendHttpEquiv('Author', 'Department web')
+                ->appendHttpEquiv('reply-to', 'suporte@weone.com.br')
+                ->appendName('robots', 'noindex, nofollow')
+                ->appendName('title', 'title')
+                ->appendName('description', 'description');
+
+        echo $this->headLink(array('rel' => 'shortcut icon', 'href' => $this->baseUrl('public/modules/default/img/favicon/favicon.ico'), 'type' => 'image/x-icon'), 'PREPEND')
+                ->appendStylesheet($this->baseUrl('public/framework/semantic.min.css'))
+                ->appendStylesheet($this->baseUrl('public/library/datatables/complement.semantic.css'))
+                ->appendStylesheet($this->baseUrl('public/modules/account/css/style.default.css'));
+        ?>        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    </head>
+    <body class="pushable">
+        <div class="ui vertical inverted sidebar menu left">
+
+            <a class="header item">
+                <h6 class="ui inverted header">
+                    <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
+                    <div class="content">
+                        WEONE
+                        <div class="sub header">DIZIMO DIGITAL</div>
+                    </div>
+                </h6>
+            </a>
+            <div class="header item">Minha conta</div>
+            <a class="item" href="<?php echo $this->baseUrl('account/information') ?>">Info. da empresa</a>
+
+            <div class="header item">Meus aplicativos</div>
+            <a class="item" href="<?php echo $this->baseUrl('report') ?>">Relatórios</a>
+
+            <div class="header item">Configurações</div>
+            <a class="item" href="<?php echo $this->baseUrl('settings/contract') ?>">Contratos</a>
+            <a class="item" href="<?php echo $this->baseUrl('settings/payment') ?>">Pagamentos</a>
+
+        </div>
+        <div class="pusher">
+
+            <div class="ui attached inverted menu menu-header">
+                <div class="ui container">
+                    <a class="toc item">
+                        <i class="sidebar icon"></i>
+                    </a>
+                    <div class="header item">
+                        <h6 class="ui inverted header">
+                            <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
+                            <div class="content">
+                                WEONE
+                                <div class="sub header">DIZIMO DIGITAL</div>
+                            </div>
+                        </h6>
+                    </div>
+                    <div class="right menu">
+                        <div class="item">
+                            <h6 class="ui inverted image header">
+                                <?php echo Zend_Auth::getInstance()->getIdentity()->username ?>
+                                <div class="sub header"><a href="<?php echo $this->baseUrl('account/sign/out') ?>">ENCERRAR SESSÃO</a></div>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php echo $this->layout()->content; ?>
+
+            <footer>
+                <div class="ui very padded vertical basic segment">
+                    <div class="ui equal width grid container">
+                        <div class="column">
+                            <h6 class="ui center aligned header">
+                                <?php echo date('Y') ?> © TODOS OS DIREITOS RESERVADOS.
+                            </h6>
+                        </div>
+                    </div>
+                </div> 
+            </footer>
+        </div>
+
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->baseUrl('public/modules/account/js/jquery.default.js'))
+                ->prependFile($this->baseUrl('public/library/datatables/complement.semantic.js'))
+                ->prependFile($this->baseUrl('public/library/datatables/default.js'))
+                ->prependFile($this->baseUrl('public/framework/components/notify.js'))
+                ->prependFile($this->baseUrl('public/framework/semantic.min.js'))
+                ->prependFile($this->baseUrl('public/config/base_url.js'))
+                ->prependFile($this->baseUrl('public/library/jquery/jquery.js'));
+        ?>
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-77935163-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+    </body>
+</html>

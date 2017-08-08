@@ -1,0 +1,74 @@
+<section>
+    <div class="ui very padded basic segment">
+        <div class="ui equal width stackable grid container">
+            <div class="row">
+                <div class="three wide column">
+                    <div class="ui mini secondary vertical fluid menu">
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/event') ?>">PLANTÕES</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/user') ?>">DIZIMISTAS</a>
+                        <a class="active item" href="<?php echo $this->baseUrl('dashboard/oncall') ?>">PLANTONISTAS</a>
+                        <a class="disabled item">RELATÓRIOS <i class="lock icon"></i></a>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui secondary top attached segment">
+                        <button class="ui mini blue button button-oncall">CADASTRAR PLANTONISTA</button>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <table class="ui small table table-oncall" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID PLANTONISTA</th>
+                                    <th>CPF</th>
+                                    <th>NOME COMPLETO</th>
+                                    <th>NASCIMENTO</th>
+                                    <th>OPÇÕES</th>
+                                </tr>                                
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="ui small modal modal-oncall">
+    <div class="header">
+        <h5 class="ui header">CADASTRAR PLANTONISTA</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-oncall">
+            <div class="field required">
+                <label>DIZIMISTA</label>
+                <div class="ui search selection dropdown dropdown-user">
+                    <input type="hidden" name="id_user" />
+                    <i class="dropdown icon"></i>
+                    <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                    <div class="default text">SELECIONE UM DIZIMISTA...</div>
+                    <div class="menu" tabindex="-1"></div>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>NOVA SENHA</label>
+                    <input type="password" name="password1" />
+                </div>
+                <div class="field">
+                    <label>CONFIRMAR SENHA</label>
+                    <input type="password" name="password2" />
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

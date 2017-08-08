@@ -1,0 +1,152 @@
+<section>
+    <div class="ui very padded basic segment">
+        <div class="ui equal width stackable grid container">
+            <div class="row">
+                <div class="three wide column">
+                    <div class="ui mini secondary vertical fluid menu">
+                        <a class="active item" href="<?php echo $this->baseUrl('dashboard/event') ?>">PLANTÕES</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/user') ?>">DIZIMISTAS</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/oncall') ?>">PLANTONISTAS</a>
+                        <a class="disabled item">RELATÓRIOS <i class="lock icon"></i></a>
+                    </div>
+                </div>
+                <div class="column transition horizontal flip in">
+                    <div class="ui top attached secondary segment">
+                        <button class="ui mini blue button button-event">CADASTRAR PLANTÃO</button>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <table class="ui small table table-event" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID PLANTÃO</th>
+                                    <th>DATA E HORA</th>
+                                    <th>SITUAÇÃO</th>
+                                    <th>OPÇÕES</th>
+                                </tr>                                
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="ui small modal modal-event">
+    <div class="header">
+        <h5 class="ui header">CADASTRAR PLANTÃO</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-event">
+            <div class="two fields">
+                <div class="field required">
+                    <label>DATA</label>
+                    <input type="date" name="date_event" />
+                </div>
+                <div class="field required">
+                    <label>HORA</label>
+                    <input type="time" name="time_event" />
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="ui small modal modal-tithe">
+    <div class="header">
+        <h5 class="ui header">CADASTRAR DIZIMO</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form">
+            <div class="field">
+                <label>DIZIMITA</label>
+                <div class="ui multiple search selection dropdown">
+                    <input type="hidden" name="id_user" />
+                    <i class="dropdown icon"></i>
+                    <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                    <div class="default text">Select...</div>
+                    <div class="menu" tabindex="-1"></div>
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>VALOR</label>
+                    <input type="text" name="tithe_value" />
+                </div>
+                <div class="field">
+                    <label>TIPO DO VALOR</label>
+                    <div class="ui multiple search selection dropdown">
+                        <input type="hidden" name="type_value" />
+                        <i class="dropdown icon"></i>
+                        <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                        <div class="default text">Select...</div>
+                        <div class="menu" tabindex="-1"></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Nº DO CHEQUE</label>
+                    <input type="text" name="observation" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+<div class="ui small modal modal-details">
+    <div class="header">
+        <h5 class="ui header">DETALHES DO PLANTÃO</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form">
+            <div class="two fields">
+                <div class="field">
+                    <label>VALOR EM CÉDULAS</label>
+                    <input type="text" name="value_ballot" />
+                </div>
+                <div class="field">
+                    <label>VALOR EM MOEDAS</label>
+                    <input type="time" name="value_coin" />
+                </div>
+            </div>
+            <div class="field">
+                <label>OBSERVAÇÃO</label>
+                <textarea rows="2" name="observation"></textarea>
+            </div>
+            <div class="field">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" name="gift" tabindex="0" class="hidden">
+                    <label>FECHAR PLANTÃO</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

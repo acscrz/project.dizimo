@@ -1,0 +1,158 @@
+<section>
+    <div class="ui very padded basic segment">
+        <div class="ui equal width stackable grid container">
+            <div class="row">
+                <div class="column transition horizontal flip in">
+                    <div class="ui top attached clearing secondary segment">
+                        <?php echo (Zend_Auth::getInstance()->getIdentity()->status_event == 1 ? '' : '<button class="ui mini blue button button-tithe">CADASTRAR DIZIMO</button>') ?>
+                        <?php echo (Zend_Auth::getInstance()->getIdentity()->status_event == 1 ? '' : '<button class="ui mini teal button button-offer">CADASTRAR OFERTA</button>') ?>
+                        <button class="ui right floated mini <?php echo (Zend_Auth::getInstance()->getIdentity()->status_event == 1 ? 'disabled' : 'red button-event-close') ?> button"><?php echo (Zend_Auth::getInstance()->getIdentity()->status_event == 1 ? 'PLANTÃO FECHADO' : 'FECHAR PLANTÃO') ?></button>
+                    </div>
+                    <div class="ui bottom attached segment"> 
+                        <table class="ui small table table-tithe" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID DIZIMO</th>
+                                    <th>CPF</th>
+                                    <th>NOME COMPLETO</th>
+                                    <th>RECEBIMENTO</th>
+                                    <th>OPÇÕES</th>
+                                </tr>                                
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <div class="ui mini secondary vertical fluid menu">
+                        <a class="active item" href="<?php echo $this->baseUrl('dashboard/event') ?>">PLANTÕES</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/user') ?>">DIZIMISTAS</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/oncall') ?>">PLANTONISTAS</a>
+                        <a class="disabled item">RELATÓRIOS <i class="lock icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="ui small modal modal-tithe">
+    <div class="header">
+        <h5 class="ui header">CADASTRAR DIZIMO</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-tithe">
+            <input type="hidden" name="id_event" value="<?php echo $_GET['q'] ?>" />
+            <div class="field required">
+                <label>DIZIMITA</label>
+                <div class="ui search selection dropdown dropdown-user">
+                    <input type="hidden" name="id_user" />
+                    <i class="dropdown icon"></i>
+                    <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                    <div class="default text">SELECIONE UM DIZIMISTA...</div>
+                    <div class="menu" tabindex="-1"></div>
+                </div>
+            </div>
+            <div class="three fields" style="display: none">
+                <div class="field required">
+                    <label>VALOR</label>
+                    <input type="text" name="tithe_value" />
+                </div>
+                <div class="field required">
+                    <label>TIPO DO VALOR</label>
+                    <div class="ui search selection dropdown">
+                        <input type="hidden" name="type_value" />
+                        <i class="dropdown icon"></i>
+                        <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                        <div class="default text">Select...</div>
+                        <div class="menu" tabindex="-1"></div>
+                    </div>
+                </div>
+                <div class="field required">
+                    <label>Nº DO CHEQUE</label>
+                    <input type="text" name="observation" />
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+<div class="ui small modal modal-offer">
+    <div class="header">
+        <h5 class="ui header">RECEBER OFERTA</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-offer">
+            <div class="two fields">
+                <div class="field required">
+                    <label>VALOR</label>
+                    <input type="text" name="value_offer" />
+                </div>
+                <div class="field required">
+                    <label>TIPO DA OFERTA</label>
+                    <div class="ui search selection dropdown dropdown-offer">
+                        <input type="hidden" name="id_type_offer" />
+                        <i class="dropdown icon"></i>
+                        <input type="text" class="search" tabindex="0"><span class="sizer"></span>
+                        <div class="default text">SELECIONE UM TIPO DE OFERTA...</div>
+                        <div class="menu" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui error message"></div>
+            <button type="submit" class="ui mini green right labeled icon button">
+                SALVAR
+                <i class="checkmark icon"></i>
+            </button>
+        </form>
+        <div class="ui divider"></div>
+        <table class="ui small table table-offer" width="100%">
+            <thead>
+                <tr>
+                    <th>ID OFERTA</th>
+                    <th>VALOR</th>
+                    <th>TIPO DA OFERTA</th>
+                    <th>OPÇÕES</th>
+                </tr>                                
+            </thead>
+        </table>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+    </div>
+</div>
+
+
+<div class="ui small modal modal-event-close">
+    <div class="header">
+        <h5 class="ui header">FECHAR PLANTÃO</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-event-close">
+            <div class="field">
+                <label>OBSERVAÇÃO</label>
+                <textarea rows="2" name="observation"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini ok red right labeled icon button">
+            FECHAR PLANTÃO
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

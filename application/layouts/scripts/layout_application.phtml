@@ -1,0 +1,143 @@
+<?php echo $this->doctype('HTML5') ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
+    <head>  
+        <?php
+        echo $this->headTitle("Site" . $this->title);
+
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1')
+                ->setHttpEquiv('Content-Type', 'text/html;charset=UTF-8')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+                ->appendHttpEquiv('language', 'pt-BR')
+                ->appendHttpEquiv('Author', 'Department web')
+                ->appendHttpEquiv('reply-to', 'suporte@weone.com.br')
+                ->appendName('robots', 'index, follow')
+                ->appendName('description', 'Site em construção');
+
+        echo $this->headLink(array('rel' => 'shortcut icon', 'href' => $this->baseUrl('public/modules/default/img/favicon/favicon.ico'), 'type' => 'image/x-icon'), 'PREPEND')
+//                ->prependStylesheet($this->baseUrl('public/modules/application/css/style.default.css'))
+                ->prependStylesheet($this->baseUrl('public/framework/semantic.min.css'));
+        ?>
+    </head>
+    <body class="pushable">
+<!--        <div class="ui inverted top fixed menu transition hidden">
+            <div class="ui container">
+
+                <a class="header item">
+                    <h4 class="ui inverted header">
+                        <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
+                        <div class="content">
+                            Weone
+                            <div class="sub header">Consultoria digital</div>
+                        </div>
+                    </h4>
+                </a>
+                <div class="right item">
+                    <div class="item">
+                        <a class="ui labeled icon primary button" href="<?php echo $this->baseUrl('account/sign/in') ?>"><i class="user icon"></i> Painel do cliente</a>
+                    </div>
+                    <div class="item">
+                        <div class="ui buttons">
+                            <a class="ui icon button" href="https://www.facebook.com/weone.oficial/" target="_blank"><i class="facebook icon"></i></a>
+                            <a class="ui icon button" href="https://twitter.com/weone_oficial" target="_blank"><i class="twitter icon"></i></a>
+                            <a class="ui icon button" href="https://www.instagram.com/weone_oficial/" target="_blank"><i class="instagram icon"></i></a>
+                            <a class="ui icon button" href="http://news.weone.com.br/" target="_blank"><i class="external icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui vertical inverted sidebar menu left">
+
+            <a class="header item">
+                <h4 class="ui inverted header">
+                    <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
+                    <div class="content">
+                        Weone
+                        <div class="sub header">Consultoria digital</div>
+                    </div>
+                </h4>
+            </a>
+            <div class="item">
+                <a href="https://www.facebook.com/weone.oficial/" target="_blank"><i class="facebook icon"></i> Facebook</a>
+            </div>
+            <div class="item">
+                <a href="https://twitter.com/weone_oficial" target="_blank"><i class="twitter icon"></i> Twitter</a>
+            </div>
+            <div class="item">
+                <a href="https://www.instagram.com/weone_oficial/" target="_blank"><i class="instagram icon"></i> Instagram</a>
+            </div>
+            <div class="item">
+                <a href="http://blog.weone.com.br/" target="_blank"><i class="external icon"></i> Blog</a>
+            </div>
+        </div>-->
+        <div class="pusher">
+
+            <?php echo $this->layout()->content; ?>
+
+            <footer>
+                <div class="ui very padded vertical basic segment">
+                    <div class="ui equal width grid container">
+                        <div class="column">
+                            <h6 class="ui center aligned inverted header">
+                                <?php echo date('Y') ?> © TODOS OS DIREITOS RESERVADOS.
+                            </h6>
+                        </div>
+                    </div>
+                </div> 
+            </footer>
+        </div>
+
+        <!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+            (function () {
+                var widget_id = 'y0c6FOqbNz';
+                var d = document;
+                var w = window;
+                function l() {
+                    var s = document.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = '//code.jivosite.com/script/widget/' + widget_id;
+                    var ss = document.getElementsByTagName('script')[0];
+                    ss.parentNode.insertBefore(s, ss);
+                }
+                if (d.readyState == 'complete') {
+                    l();
+                } else {
+                    if (w.attachEvent) {
+                        w.attachEvent('onload', l);
+                    } else {
+                        w.addEventListener('load', l, false);
+                    }
+                }
+            })();
+        </script>
+        <!-- {/literal} END JIVOSITE CODE -->
+        
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->baseUrl('public/framework/semantic.min.js'))
+                ->prependFile($this->baseUrl('public/config/base_url.js'))
+                ->prependFile($this->baseUrl('public/library/jquery/jquery.js'));
+        ?>
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-77935163-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+    </body>
+</html>

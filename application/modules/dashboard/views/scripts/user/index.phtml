@@ -1,0 +1,131 @@
+<section>
+    <div class="ui very padded basic segment">
+        <div class="ui equal width stackable grid container">
+            <div class="row">
+                <div class="three wide column">
+                    <div class="ui mini secondary vertical fluid menu">
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/event') ?>">PLANTÕES</a>
+                        <a class="active item" href="<?php echo $this->baseUrl('dashboard/user') ?>">DIZIMISTAS</a>
+                        <a class="item" href="<?php echo $this->baseUrl('dashboard/oncall') ?>">PLANTONISTAS</a>
+                        <a class="disabled item">RELATÓRIOS <i class="lock icon"></i></a>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui secondary top attached segment">
+                        <button class="ui mini blue button button-user">CADASTRAR DIZIMISTA</button>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <table class="ui small table table-user">
+                            <thead>
+                                <tr>
+                                    <th>ID DIZIMISTA</th>
+                                    <th>CPF</th>
+                                    <th>NOME COMPLETO</th>
+                                    <th>NASCIMENTO</th>
+                                    <th>OPÇÕES</th>
+                                </tr>                                
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="ui small modal modal-user">
+    <div class="header">
+        <h5 class="ui header">CADASTRAR DIZIMISTA</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-user">
+            <div class="fields">
+                <div class="five wide field required">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" />
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field required">
+                    <label>NOME COMPLETO</label>
+                    <input type="text" name="username" />
+                </div>
+                <div class="five wide field required">
+                    <label>NASCIMENTO</label>
+                    <input type="date" name="date_birth" />
+                </div>
+            </div>
+            <div class="two fields required">
+                <div class="eleven wide field required">
+                    <label>E-MAIL</label>
+                    <input type="text" name="email" />
+                </div>
+                <div class="five wide field required">
+                    <label>CELULAR</label>
+                    <input type="text" name="mobile" />
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="ui small modal modal-details">
+    <div class="header">
+        <h5 class="ui header">DETALHES DIZIMISTA</h5>
+    </div>
+    <div class="content">
+        <form class="ui small form form-details">
+            <input type="hidden" name="id_user" />
+            <div class="fields">
+                <div class="five wide field required disabled">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" />
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field required">
+                    <label>NOME COMPLETO</label>
+                    <input type="text" name="username" />
+                </div>
+                <div class="five wide field required">
+                    <label>NASCIMENTO</label>
+                    <input type="date" name="date_birth" />
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="eleven wide field required">
+                    <label>E-MAIL</label>
+                    <input type="text" name="email" />
+                </div>
+                <div class="five wide field required">
+                    <label>CELULAR</label>
+                    <input type="text" name="mobile" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui left floated mini button disabled">
+            EXCLUIR DIZIMISTA
+        </div>
+        
+        <div class="ui mini black deny button">
+            CANCELAR
+        </div>
+        <div class="ui mini positive right labeled icon button">
+            SALVAR
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

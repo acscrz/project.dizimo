@@ -1,0 +1,55 @@
+<?php echo $this->doctype('HTML5') ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
+    <head>  
+        <?php
+        echo $this->headTitle("Weone");
+
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1')
+                ->setHttpEquiv('Content-Type', 'text/html;charset=UTF-8')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+                ->appendHttpEquiv('language', 'pt-BR')
+                ->appendHttpEquiv('Author', 'Department web')
+                ->appendHttpEquiv('reply-to', 'suporte@weone.com.br')
+                ->appendName('robots', 'index, follow');
+
+        echo $this->headLink(array('rel' => 'shortcut icon', 'href' => $this->baseUrl('public/modules/default/img/favicon/favicon.ico'), 'type' => 'image/x-icon'), 'PREPEND')
+                ->prependStylesheet('https://cdn.datatables.net/1.10.12/css/dataTables.semanticui.min.css')
+                ->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.1/semantic.min.css')
+                ->prependStylesheet($this->baseUrl('public/framework/semantic.css'));
+        ?>
+    </head>
+    <body>
+        
+        <?php echo $this->layout()->content; ?>
+        
+        <?php
+            echo $this->headScript()
+                ->prependFile($this->baseUrl('public/modules/account/js/library.task.js'))
+                ->prependFile('//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.1/semantic.min.js')
+                ->prependFile('https://cdn.datatables.net/1.10.12/js/dataTables.semanticui.min.js')
+                ->prependFile('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js')
+                ->prependFile($this->baseUrl('public/framework/semantic.js'))
+                ->prependFile($this->baseUrl('public/config/base_url.js'))
+                ->prependFile($this->baseUrl('public/library/jquery/jquery.js'));
+        ?>
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-77935163-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+    </body>
+</html>
