@@ -3,7 +3,7 @@ $(document).ready(function () {
     
     $('.ui.dropdown.dropdown-user').dropdown({
         apiSettings: {
-            url: base_url + 'dashboard/user/dropdown',
+            url: base_url + 'dashboard/user/dropdown?q={query}',
             cache: false
         }
     });

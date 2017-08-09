@@ -5,14 +5,16 @@ $(document).ready(function () {
 
     $('.table-user tbody').on('click', '.button-details', function () {
         var row = table.row($(this).parents('tr')).data();
+        
+        $('.modal-details .button-delete').attr('data-id', row[0]);
 
         $('.form-details input[name="id_user"]').val(row[0]);
         $('.form-details input[name="cpf"]').val(row[1]);
         $('.form-details input[name="username"]').val(row[2]);
         $('.form-details input[name="date_birth"]').val(row[3]);
         
-        $('.form-details input[name="email"]').val();
-        $('.form-details input[name="mobile"]').val();
+        $('.form-details input[name="email"]').val(row[4]);
+        $('.form-details input[name="mobile"]').val(row[5]);
 
         var modal = $('.ui.small.modal.modal-details').modal({
             closable: false,

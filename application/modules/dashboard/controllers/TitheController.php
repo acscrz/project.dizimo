@@ -17,10 +17,11 @@ class Dashboard_TitheController extends Zend_Controller_Action {
             ->appendFile($this->view->baseUrl('public/modules/dashboard/tithe/js/library.select.js'))
             ->appendFile($this->view->baseUrl('public/modules/dashboard/tithe/js/library.insert.js'))
             ->appendFile($this->view->baseUrl('public/modules/dashboard/tithe/js/library.update.js'))
-//            ->appendFile($this->view->baseUrl('public/modules/dashboard/tithe/js/library.delete.js'))
+            ->appendFile($this->view->baseUrl('public/modules/dashboard/tithe/js/library.delete.js'))
                 
             ->appendFile($this->view->baseUrl('public/modules/dashboard/offer/js/library.select.js'))
             ->appendFile($this->view->baseUrl('public/modules/dashboard/offer/js/library.insert.js'))
+            ->appendFile($this->view->baseUrl('public/modules/dashboard/offer/js/library.delete.js'))
                 ;
         
         Zend_Loader::loadClass("Event");
@@ -42,7 +43,7 @@ class Dashboard_TitheController extends Zend_Controller_Action {
         Zend_Loader::loadClass("Tithe");
         $model = new Tithe();
         
-        $array = $model->selectView($this->_request->getParam("id_event"));
+        $array = $model->selectView(Zend_Auth::getInstance()->getIdentity()->id_event);
         
         foreach ($array as $value) {
             $result[] = array(
@@ -72,6 +73,19 @@ class Dashboard_TitheController extends Zend_Controller_Action {
         $result = $model->insertTable($data);
         
         echo Zend_Json::encode($result);    
+    }
+    
+    public function deleteAction() {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
+
+        Zend_Loader::loadClass("Tithe");
+        $model = new Tithe();
+
+        $result = $model->deleteTable($this->_request->getParam("id_tithe"));
+
+        echo Zend_Json::encode($result);
     }
     
 }

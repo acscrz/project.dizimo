@@ -27,8 +27,13 @@ class Tithe extends Zend_Db_Table {
     }
     
     public function updateTable($id_user = null, $data = null) {        
-        $where = $this->getAdapter()->quoteInto('id_tith = ?', $id_user);        
+        $where = $this->getAdapter()->quoteInto('id_tithe = ?', $id_user);        
         return $this->update($data, $where);         
+    }
+    
+    public function deleteTable($id_tithe = null) {        
+        $where = $this->getAdapter()->quoteInto('id_tithe = ?', $id_tithe);        
+        return $this->delete($where);         
     }
     
 }

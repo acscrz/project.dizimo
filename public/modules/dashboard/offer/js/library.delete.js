@@ -1,21 +1,20 @@
 
 $(document).ready(function () {
 
-    var table = $('.table-process').DataTable();
+    var table = $('.table-offer').DataTable();
 
-    $('.table-process').on('click', '.button-delete', function () {
+    $('.table-offer').on('click', '.button-delete', function () {
         var row = table.row($(this).parents('tr')).data();
         var $this = $(this);
 
-        
         $(this).alert({
             type: 'confirm',
-            content: 'Tem certeza que deseja excluir esse processo?',
+            content: 'Tem certeza que deseja excluir essa oferta?',
             onApprove: function () {
                 $.ajax({
                     type: 'POST',
-                    url: base_url + 'account/process/delete',
-                    data: {id_process: row[ 0 ]},
+                    url: base_url + 'dashboard/offer/delete',
+                    data: {id_offer: row[ 0 ]},
                     beforeSend: function (xhr) {
                         $this.addClass('loading');
                     },

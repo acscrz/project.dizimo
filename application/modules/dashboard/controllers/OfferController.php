@@ -70,4 +70,17 @@ class Dashboard_OfferController extends Zend_Controller_Action {
         echo Zend_Json::encode($result);    
     }
     
+    public function deleteAction() {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
+
+        Zend_Loader::loadClass("Offer");
+        $model = new Offer();
+
+        $result = $model->deleteTable($this->_request->getParam("id_offer"));
+
+        echo Zend_Json::encode($result);
+    }
+    
 }

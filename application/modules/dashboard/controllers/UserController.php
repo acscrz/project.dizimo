@@ -19,7 +19,7 @@ class Dashboard_UserController extends Zend_Controller_Action {
             ->appendFile($this->view->baseUrl('public/modules/dashboard/user/js/library.select.js'))
             ->appendFile($this->view->baseUrl('public/modules/dashboard/user/js/library.insert.js'))
             ->appendFile($this->view->baseUrl('public/modules/dashboard/user/js/library.update.js'))
-//            ->appendFile($this->view->baseUrl('public/modules/dashboard/user/js/library.delete.js'))
+            ->appendFile($this->view->baseUrl('public/modules/dashboard/user/js/library.delete.js'))
                 ;
     }
     
@@ -38,7 +38,9 @@ class Dashboard_UserController extends Zend_Controller_Action {
                 $value['id_user'],
                 $value['cpf'],
                 $value['username'],
-                $value['date_birth']
+                $value['date_birth'],
+                $value['email'],
+                $value['mobile']
             );
         }  
         
@@ -85,6 +87,11 @@ class Dashboard_UserController extends Zend_Controller_Action {
         
         $result = $model->insertTable($data);
         
+        Zend_Loader::loadClass("Relbusinessuser");
+        $rel = new Relbusinessuser();
+        
+        $rel->insertTable(array(id_business => Zend_Auth::getInstance()->getIdentity()->id_business, id_user => $result));
+        
         echo Zend_Json::encode($result);    
     }
     
@@ -96,14 +103,27 @@ class Dashboard_UserController extends Zend_Controller_Action {
         Zend_Loader::loadClass("User");
         $model = new User();
         
+        $result = $model->updateTable($this->_request->getParam('id_user'), array(password => md5($this->_request->getParam('password1'))));
+        
         Zend_Loader::loadClass("Relbusinessuser");
         $rel = new Relbusinessuser();
         
-        $result = $model->updateTable($this->_request->getParam('id_user'), array(password => md5($this->_request->getParam('password1'))));
-        
-        $rel->insertTable(array(id_business => Zend_Auth::getInstance()->getIdentity()->id_business, id_user => $this->_request->getParam('id_user')));
-        
+        $rel->updateTable($this->_request->getParam('id_user'), Zend_Auth::getInstance()->getIdentity()->id_business, array(level => 1));
+
         echo Zend_Json::encode($result);    
+    }
+    
+    public function deleteAction() {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
+
+        Zend_Loader::loadClass("User");
+        $model = new User();
+
+        $result = $model->deleteTable($this->_request->getParam("id_user"));
+
+        echo Zend_Json::encode($result);
     }
     
 }

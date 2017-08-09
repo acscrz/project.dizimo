@@ -23,7 +23,7 @@ $(document).ready(function () {
                 orderable: false,
                 className: 'right aligned',
                 render: function (data, type, row) {
-                    return '<button class="ui mini red basic button disabled">REMOVER</button>';
+                    return '<button class="ui mini red basic button button-delete">REMOVER</button>';
                 },
                 targets: -1
             }

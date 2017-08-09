@@ -32,9 +32,14 @@ class Offer extends Zend_Db_Table {
         return $this->insert($data);         
     }
     
-    public function updateTable($id_user = null, $data = null) {        
-        $where = $this->getAdapter()->quoteInto('id_tith = ?', $id_user);        
+    public function updateTable($id_offer = null, $data = null) {        
+        $where = $this->getAdapter()->quoteInto('id_offer = ?', $id_offer);        
         return $this->update($data, $where);         
+    }
+    
+    public function deleteTable($id_offer = null) {        
+        $where = $this->getAdapter()->quoteInto('id_offer = ?', $id_offer);        
+        return $this->delete($where);         
     }
     
 }

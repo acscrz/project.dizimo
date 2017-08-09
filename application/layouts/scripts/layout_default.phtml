@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
     <head>  
         <?php
-        echo $this->headTitle("Site" . $this->title);
+        echo $this->headTitle("WeDizimo" . $this->title);
 
         echo $this->headMeta()
                 ->appendName('viewport', 'width=device-width, initial-scale=1')
@@ -29,8 +29,8 @@
                 <h6 class="ui inverted header">
                     <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
                     <div class="content">
-                        WEONE
-                        <div class="sub header">DIZIMO DIGITAL</div>
+                        WeDizimo
+                        <div class="sub header">Controle Online</div>
                     </div>
                 </h6>
             </a>
@@ -56,8 +56,8 @@
                         <h6 class="ui inverted header">
                             <img src="<?php echo $this->baseUrl('public/modules/default/img/brand/logotipo_inverted.svg') ?>" />
                             <div class="content">
-                                WEONE
-                                <div class="sub header">DIZIMO DIGITAL</div>
+                                WeDizimo
+                                <div class="sub header">Controle Online</div>
                             </div>
                         </h6>
                     </div>
@@ -65,7 +65,7 @@
                         <div class="item">
                             <h6 class="ui inverted image header">
                                 <?php echo Zend_Auth::getInstance()->getIdentity()->username ?>
-                                <div class="sub header"><a href="<?php echo $this->baseUrl('account/sign/out') ?>">ENCERRAR SESSÃO</a></div>
+                                <div class="sub header"><a href="<?php echo $this->baseUrl('account/sign/out') ?>">Encerrar sessão</a></div>
                             </h6>
                         </div>
                     </div>
@@ -92,7 +92,8 @@
                 ->prependFile($this->baseUrl('public/modules/account/js/jquery.default.js'))
                 ->prependFile($this->baseUrl('public/library/datatables/complement.semantic.js'))
                 ->prependFile($this->baseUrl('public/library/datatables/default.js'))
-                ->prependFile($this->baseUrl('public/framework/components/notify.js'))
+                ->prependFile($this->baseUrl('public/framework/components/semantic.alert.js'))
+                ->prependFile($this->baseUrl('public/framework/components/semantic.notify.js'))
                 ->prependFile($this->baseUrl('public/framework/semantic.min.js'))
                 ->prependFile($this->baseUrl('public/config/base_url.js'))
                 ->prependFile($this->baseUrl('public/library/jquery/jquery.js'));

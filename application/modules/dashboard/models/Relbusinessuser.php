@@ -16,4 +16,10 @@ class Relbusinessuser extends Zend_Db_Table {
         return $this->insert($data);
     }
     
+    public function updateTable($id_user = null, $id_business = null, $data = null) {                
+        $where[] = $this->getAdapter()->quoteInto('id_user = ?', $id_user);         
+        $where[] = $this->getAdapter()->quoteInto('id_business = ?', $id_business);          
+        return $this->update($data, $where);         
+    }
+    
 }

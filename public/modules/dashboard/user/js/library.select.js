@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     $('input[name="cpf"]').mask('999.999.999-99');
     
-    
     $('input[name="mobile"]').mask('(99) 99999-999?9', {placeholder: ' '});
     
     var form = $('.ui.form.form-user');
@@ -18,15 +17,27 @@ $(document).ready(function () {
             },
             {
                 orderable: false,
+                render: function ( data, type, row ) {
+                    return '<h4 class="ui header">' + row[1] + '<div class="sub header">' + row[2] + '</div></h4>';
+                },
                 targets: 1
             },
             {
                 orderable: false,
-                targets: 2
+                targets: 2,
+                visible: false
             },
             {
                 orderable: false,
                 targets: 3
+            },
+            {
+                orderable: false,
+                targets: 4
+            },
+            {
+                orderable: false,
+                targets: 5
             },
             {
                 searchable: false,
